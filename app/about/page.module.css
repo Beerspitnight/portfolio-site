@@ -1,0 +1,35 @@
+.title {
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-rule);
+  margin-bottom: 32px;
+}
+
+.content {
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+  max-width: 640px;
+}
+
+.content p {
+  margin-bottom: 16px;
+}
+
+.links {
+  margin-top: 32px;
+  display: flex;
+  gap: 20px;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-secondary);
+}
+
+.link:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}

@@ -28,6 +28,7 @@ export default function Nav() {
               className={`${styles.link} ${
                 pathname === link.href ? styles.active : ''
               }`}
+              {...(pathname === link.href ? { 'aria-current': 'page' as const } : {})}
             >
               {link.label}
             </Link>

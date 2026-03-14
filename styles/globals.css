@@ -57,6 +57,31 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 8px 16px;
+  background: var(--color-text);
+  color: var(--color-bg);
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: auto;
+  height: auto;
+}
+
 /* Global utilities */
 .u-rule {
   border-bottom: 3px solid var(--color-rule);

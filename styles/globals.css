@@ -1,0 +1,78 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Design tokens */
+:root {
+  --color-bg: #f5f5f0;
+  --color-text: #111;
+  --color-text-secondary: #515151;
+  --color-text-tertiary: #595959;
+  --color-accent: #ff3e00;
+  --color-border: #ddd;
+  --color-rule: #111;
+  --font-mono: 'Courier New', monospace;
+  --font-body: system-ui, sans-serif;
+}
+
+/* Base */
+html {
+  font-family: var(--font-mono);
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+body {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.1rem; }
+
+a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+/* Global utilities */
+.u-rule {
+  border-bottom: 3px solid var(--color-rule);
+}
+
+.u-accent-left {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 12px;
+}
+
+.u-chip {
+  display: inline-block;
+  border: 1px solid var(--color-border);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+}

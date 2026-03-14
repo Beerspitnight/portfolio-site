@@ -1,0 +1,17 @@
+.title {
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-rule);
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,5 @@
+.title {
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-rule);
+  margin-bottom: 32px;
+}

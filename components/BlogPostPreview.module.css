@@ -1,0 +1,44 @@
+.preview {
+  margin-bottom: 32px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.title {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.title a {
+  color: var(--color-text);
+}
+
+.title a:hover {
+  color: var(--color-accent);
+}
+
+.meta {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  margin-bottom: 8px;
+}
+
+.excerpt {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.readLink {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--color-accent);
+}
+
+.readLink:hover {
+  text-decoration: underline;
+}

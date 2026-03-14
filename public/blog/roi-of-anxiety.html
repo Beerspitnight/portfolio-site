@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The ROI of Anxiety | Brian McManus</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #4A3F7A;
+            --purple-dark: #2e2753;
+            --orange: #EF8A30;
+            --accent-orange: #E06B1E;
+            --teal: #88A2B8;
+            --navy: #1F2437;
+            --white: #FFFFFF;
+            --gray: #ababab;
+            --gray-dark: #6b7280;
+            --light-bg: #F7F9FC;
+            --tooltip-bg: #2D3748;
+            --purple-light: rgba(74, 63, 122, 0.06);
+            --purple-medium: rgba(74, 63, 122, 0.25);
+            --radius-sm: 8px;
+            --radius-md: 10px;
+            --radius-lg: 12px;
+            --radius-xl: 15px;
+        }
+
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            background: var(--light-bg);
+            line-height: 1.8;
+            color: var(--navy);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* === Article Wrapper === */
+        .article-content {
+            max-width: 900px;
+            margin: 40px auto;
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .article-content > h1:first-of-type {
+            color: var(--purple);
+            font-size: 2.5em;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+
+        .author-line {
+            font-weight: 600;
+            color: var(--gray-dark);
+            margin-bottom: 30px;
+        }
+
+        .article-content > h2 {
+            color: var(--purple);
+            margin-top: 40px;
+            font-size: 1.8em;
+            border-left: 4px solid var(--accent-orange);
+            padding-left: 15px;
+        }
+
+        .article-content > h3 {
+            color: var(--purple);
+            margin-top: 30px;
+            font-size: 1.4em;
+            border-left: 4px solid var(--purple-medium);
+            padding-left: 15px;
+        }
+
+        .article-content > p { margin-bottom: 20px; }
+
+        .article-content > hr {
+            border: 0;
+            height: 1px;
+            background: var(--purple-medium);
+            margin: 40px 0;
+        }
+
+        .article-content ul {
+            padding-left: 20px;
+        }
+        .article-content > ul li {
+            margin-bottom: 10px;
+        }
+
+        .highlight-text {
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .data-point {
+            font-size: 1.05em;
+            font-weight: 600;
+            color: var(--navy);
+            padding: 4px 0;
+        }
+
+        /* === TIMELINE SECTION (embedded) === */
+        .timeline-embed {
+            margin: 50px -60px;
+        }
+
+        .tl-page-frame {
+            background: var(--accent-orange);
+            padding: 20px;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+        }
+
+        .tl-container {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px 48px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+        }
+
+        .tl-container h1 {
+            text-align: center;
+            color: var(--purple);
+            font-size: clamp(2em, 5vw, 2.8em);
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            border: none;
+            padding: 0;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: var(--purple-dark);
+            font-size: clamp(1em, 2.5vw, 1.1em);
+            font-weight: 500;
+            margin-bottom: 50px;
+            line-height: 1.5;
+        }
+
+        /* Category Tabs */
+        .category-container {
+            background: var(--white);
+            border-radius: 12px;
+            border: 2px solid var(--purple-medium);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .cat-heading {
+            color: var(--gray-dark);
+            font-size: 1.5em;
+            text-align: center;
+            margin-bottom: 2px;
+            border-bottom: 2px solid var(--purple-dark);
+            padding-bottom: 5px;
+        }
+
+        .category-tabs {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .category-tab {
+            background: #F7F9FC;
+            border: 2px solid var(--purple);
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-weight: 600;
+            font-size: 1em;
+            color: var(--white);
+            cursor: default;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .category-tab.tab-policy { background: var(--purple); border-color: var(--purple); }
+        .category-tab.tab-infra { background: var(--teal); border-color: var(--teal); }
+        .category-tab.tab-platforms { background: var(--accent-orange); border-color: var(--accent-orange); }
+        .category-tab.tab-milestones { background: var(--navy); border-color: var(--navy); }
+
+        /* Intro Container */
+        .intro-container {
+            background: #F7F9FC;
+            border-radius: 12px;
+            border: 2px solid var(--purple-medium);
+            padding: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+        }
+
+        /* Comparison Section */
+        .comparison-section { margin: 40px 0 60px 0; }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .comparison-panel {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            text-align: center;
+            border: 2px solid var(--purple-medium);
+        }
+
+        .comparison-year {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--purple);
+        }
+
+        .comparison-stat {
+            background: var(--purple-light);
+            border-radius: 10px;
+            padding: 18px;
+            margin: 12px 0;
+            border: 2px solid var(--purple-medium);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .comparison-stat:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(74, 63, 122, 0.12);
+        }
+
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 8px;
+        }
+
+        .stat-desc {
+            font-size: 0.95em;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        /* Phase Dividers */
+        .phase-divider {
+            text-align: center;
+            margin: 80px 0 50px 0;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(74, 63, 122, 0.08), rgba(74, 63, 122, 0.02));
+            border: 2px solid var(--purple-medium);
+            position: relative;
+        }
+
+        .phase-number {
+            position: absolute;
+            top: -22px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--purple);
+            color: var(--white);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4em;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(74, 63, 122, 0.3);
+        }
+
+        .phase-title {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 8px;
+        }
+
+        .phase-years {
+            font-size: 1.3em;
+            color: var(--purple-dark);
+            font-weight: 600;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--light-bg);
+            border-radius: 15px;
+            padding: 35px;
+            margin: 35px 0;
+        }
+
+        .stats-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 18px;
+            color: var(--purple);
+            border-bottom: 3px solid var(--purple);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 24px;
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border: 2px solid var(--purple-medium);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(74, 63, 122, 0.12);
+        }
+
+        .stat-icon { margin-bottom: 12px; }
+        .stat-icon img { width: 48px; height: 48px; display: block; margin: 0 auto; object-fit: contain; }
+        .stat-number { font-size: 2em; font-weight: 700; margin: 10px 0; color: var(--purple); }
+        .stat-label { font-size: 0.9em; color: var(--navy); line-height: 1.5; }
+
+        /* Callout Box */
+        .callout {
+            background: rgba(239, 138, 48, 0.08);
+            border-left: 6px solid var(--accent-orange);
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin: 35px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            box-shadow: 0 2px 8px rgba(224, 107, 30, 0.4);
+        }
+
+        .callout-icon img { width: 48px; height: 48px; }
+        .callout-label { font-size: 1.4em; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent-orange); font-weight: 700; margin-bottom: 8px; }
+        .callout-text { font-size: 1.05em; color: #2d3748; font-weight: 500; line-height: 1.8; }
+        .callout-link { font-size: 1.2em; color: #E06B1E; font-weight: 600; line-height: 1.9; text-align: center; margin-top: 10px; }
+
+        .blockquote-text {
+            font-size: 1.1em;
+            color: var(--navy);
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            text-align: left;
+            margin-left: 20px;
+            border-left: 5px solid #E06B1E;
+            padding-left: 10px;
+        }
+
+        /* Timeline Rows */
+        .timeline-row {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-left: 6px solid var(--purple);
+        }
+
+        .row-label {
+            font-size: 0.8em;
+            font-weight: 700;
+            color: var(--gray);
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-items {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .timeline-item {
+            background: var(--purple-light);
+            border: 2px solid var(--purple-medium);
+            border-radius: 10px;
+            padding: 16px;
+            padding-left: 36px;
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timeline-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(74, 63, 122, 0.15);
+            z-index: 10;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 12px;
+            bottom: 12px;
+            width: 8px;
+            border-radius: 8px;
+            background: var(--purple);
+            transition: transform 0.18s;
+        }
+
+        .timeline-item:hover::before { transform: scaleY(1.05); }
+
+        .popout {
+            position: absolute;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            width: 280px;
+            max-width: 90vw;
+            background: var(--tooltip-bg);
+            color: var(--white);
+            padding: 16px 20px;
+            border-radius: var(--radius-sm);
+            font-size: 0.9em;
+            line-height: 1.7;
+            text-align: left;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .popout strong { color: var(--orange); display: block; margin-bottom: 6px; }
+
+        .timeline-item.active .popout {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .popout::after {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: var(--tooltip-bg) transparent transparent transparent;
+        }
+
+        /* Color-coded timeline rows */
+        .timeline-row.policy .timeline-item::before { background: var(--purple); }
+        .timeline-row.infra .timeline-item::before { background: var(--teal); }
+        .timeline-row.platform .timeline-item::before { background: var(--accent-orange); }
+        .timeline-row.adoption .timeline-item::before { background: var(--navy); }
+
+        .timeline-row.policy .row-label { border-left: 6px solid var(--purple); color: var(--purple); background: var(--purple-light); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+        .timeline-row.infra .row-label { border-left: 6px solid var(--teal); color: var(--teal); background: rgba(136,162,184,0.08); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+        .timeline-row.platform .row-label { border-left: 6px solid var(--accent-orange); color: var(--accent-orange); background: rgba(224,107,30,0.08); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+        .timeline-row.adoption .row-label { border-left: 6px solid var(--navy); color: var(--navy); background: rgba(31,36,55,0.08); padding: 6px 12px; border-radius: 4px; display: inline-block; }
+
+        .item-year { font-weight: 700; font-size: 0.95em; color: var(--purple); margin-bottom: 6px; }
+        .item-title { font-weight: 600; font-size: 1em; color: #1a202c; margin-bottom: 5px; }
+        .item-desc { font-size: 0.85em; color: var(--gray-dark); line-height: 1.5; }
+
+        /* Takeaways */
+        .takeaways-section {
+            margin: 40px 0 20px 0;
+            padding-top: 20px;
+            border-top: 2px solid var(--purple-light);
+        }
+
+        .takeaways-title {
+            font-size: 2em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--purple);
+        }
+
+        .takeaways-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            align-items: start;
+        }
+
+        .takeaway-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 14px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 2px solid var(--purple-medium);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .takeaway-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(74, 63, 122, 0.12);
+        }
+
+        .takeaway-number { font-size: 2.2em; font-weight: 700; color: var(--accent-orange); margin-bottom: 4px; }
+        .takeaway-text { font-size: 0.95em; color: var(--navy); line-height: 1.5; }
+
+        /* Author Bio */
+        .author-bio {
+            margin-top: 50px;
+            padding: 30px;
+            background: var(--light-bg);
+            border-left: 6px solid var(--purple);
+            border-radius: var(--radius-lg);
+        }
+
+        .author-bio h3 {
+            color: var(--purple);
+            margin-top: 0;
+            font-size: 1.4em;
+        }
+
+        .author-bio p { font-size: 0.95em; line-height: 1.7; }
+
+        .credentials-list {
+            list-style: none;
+            padding: 0;
+        }
+        .credentials-list li {
+            padding: 4px 0;
+            font-size: 0.9em;
+            color: var(--gray-dark);
+        }
+        .credentials-list li::before {
+            content: "\2022";
+            color: var(--purple);
+            font-weight: 700;
+            margin-right: 8px;
+        }
+
+        /* Works Cited */
+        .works-cited {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid var(--purple-medium);
+        }
+
+        .works-cited h3 {
+            color: var(--purple);
+            font-size: 1.4em;
+            border-left: 4px solid var(--accent-orange);
+            padding-left: 15px;
+        }
+
+        .works-cited .cite {
+            font-size: 0.85em;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            text-indent: -30px;
+        }
+
+        .works-cited a {
+            color: var(--accent-orange);
+            text-decoration: underline;
+        }
+
+        .data-limitations {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--purple-light);
+            border-radius: var(--radius-sm);
+            font-size: 0.85em;
+            color: var(--gray-dark);
+        }
+
+        .data-limitations h4 {
+            color: var(--purple);
+            margin-top: 0;
+        }
+
+        .connect-links a {
+            color: var(--accent-orange);
+            text-decoration: none;
+        }
+        .connect-links a:hover { text-decoration: underline; }
+
+        /* Responsive */
+        @media (prefers-reduced-motion: reduce) {
+            .timeline-item, .stat-card, .comparison-stat, .takeaway-card { transition: none; }
+            .timeline-item:hover, .stat-card:hover, .comparison-stat:hover, .takeaway-card:hover { transform: none; }
+        }
+
+        @media (max-width: 768px) {
+            .article-content { padding: 30px 20px; margin: 0; border-radius: 0; }
+            .timeline-embed { margin: 30px -20px; }
+            .tl-page-frame { padding: 12px; }
+            .tl-container { padding: 24px; border-radius: 8px; }
+            .tl-container h1 { font-size: 1.8em; }
+            .comparison-grid { grid-template-columns: 1fr; gap: 20px; }
+            .category-tabs { flex-direction: column; gap: 10px; }
+            .category-tab { width: 100%; }
+            .timeline-items { flex-direction: column; gap: 12px; }
+            .timeline-item { min-width: 100%; }
+            .popout { display: none; }
+            .stats-grid { grid-template-columns: 1fr; gap: 15px; }
+            .callout { flex-direction: column; padding: 20px; gap: 15px; }
+            .takeaways-grid { grid-template-columns: 1fr; gap: 15px; }
+            .phase-title { font-size: 1.6em; }
+        }
+
+        @media (max-width: 480px) {
+            .tl-page-frame { padding: 8px; }
+            .tl-container { padding: 16px; }
+            .tl-container h1 { font-size: 1.5em; }
+            .phase-title { font-size: 1.4em; }
+            .stat-number { font-size: 1.6em; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="article-content">
+
+    <h1>The ROI of Anxiety: What $52 Billion in EdTech Spending Actually Bought Us</h1>
+    <p class="author-line">By Brian McManus | First Published: 11.22.25</p>
+
+    <h2>Introduction: A Personal Reckoning</h2>
+
+    <p>This article was meant to be a straightforward research piece on the timeline of EdTech integration in US k-12 public schools. But yesterday, the research left the electrons of my screen and landed squarely in my living room, with my freshman son as the subject.</p>
+
+    <p>Like many parents, I've been trying to coach him on navigating high school while keeping an eye on the online gradebook. Recently, he fell behind in English and Math. Because I hadn't checked the "email me everything" box during setup, I was blissfully unaware. His mother, however, was getting daily updates. Conflict ensued.</p>
+
+    <p>When I pulled him over to check his grades, I asked&mdash;calmly&mdash;"Why do you have two missing assignments in English?"</p>
+
+    <p>His response was immediate: defensive, rapid-fire, and full of justifications. Once he finished his closing argument, I asked, "Were they due on the days you were sick?" He paused, calmed down, and confirmed that was the case.</p>
+
+    <p>Twenty minutes later, his mother called. I heard the exact same defense from him. And suddenly, I understood the problem.</p>
+
+    <p>Grades are supposed to be simple symbols representing academic achievement. (I will spare you my rant on what an 85% actually means compared to an 84%, or how "extra credit" for volunteering, privileges those with free time and transportation). But if a grade is a symbol of achievement, what does it fail to represent? A desire to learn? Work ethic? The willingness to choose a difficult topic over an easy one?</p>
+
+    <p><strong class="highlight-text">The missing piece of the puzzle was context.</strong></p>
+
+    <p>I emailed his teachers. Both replied with kind words about him (though they noted his tendency to find games on his laptop and a need for better note-taking&mdash;hello, summer Study Skills program). Crucially, I asked about the deadlines for the missing work. Both teachers were nonchalant: "He can do it next week," or "He can take the test Monday or Wednesday. It's up to him."</p>
+
+    <p>The online gradebook didn't say that. It just screamed "MISSING" and flashed a scary "45%" average.</p>
+
+    <p class="data-point">The data was deceptive.<br>
+    The marking period is two weeks old.<br>
+    There are only four assignments.<br>
+    The missing work is worth 1/3 of his grade.<br>
+    The teacher isn't worried.</p>
+
+    <p>Yet, my son has been conditioned to react defensively to the data because the Gradebook has become the ultimate Authority.</p>
+
+    <p>We decided to shift the dynamic. Instead of an inquisition over missing checkboxes, we focused on goal setting: What do you want to achieve? How does being proactive support that? It was a lesson in how to be an adult.</p>
+
+    <p>But this domestic episode illustrates exactly what my "beast" of a research project uncovered. The timeline below represents the rise of EdTech&mdash;not just as tools for learning, but as mechanisms of surveillance and inequity.</p>
+
+    <hr>
+
+    <h2>The Investment That Changed Everything</h2>
+
+    <p>Between 2004 and 2021, American K-12 education underwent a quiet revolution. What began as a promise to "bridge the digital divide" transformed into something far more complex: a surveillance infrastructure that would make Jeremy Bentham's panopticon look quaint by comparison.</p>
+
+    <h3>The Federal Commitment</h3>
+    <p>The federal government invested $37 - 52 billion in broadband and education technology infrastructure during this period&mdash;a massive investment that increased tech-based solutions in schools by orders of magnitude.</p>
+    <p>This wasn't just about infrastructure. It was about fundamentally changing what "school" meant.</p>
+
+    <h3>The Catalyst: Common Core Testing Requirements</h3>
+    <p>The inflection point came in 2013-2014, when Common Core State Standards testing requirements forced a technological reckoning. The Partnership for Assessment of Readiness for College and Careers (PARCC) and Smarter Balanced Assessment Consortium mandated computer-based assessments for 50 million students&mdash;requiring devices with minimum 9.5-inch screens, keyboards, and secure "lockdown" browser capability.</p>
+    <p>Districts needed sufficient devices for testing windows, rotating students through computer labs, and ensuring every child could access online assessments. The result was a massive wave of Chromebook and iPad purchases, WiFi upgrades, and network security implementations.</p>
+    <p>By 2016, the technological foundation for ubiquitous classroom surveillance was in place.</p>
+
+    <hr>
+
+    <!-- ============================================================ -->
+    <!-- ========== FULL INTERACTIVE TIMELINE (EMBEDDED) ========== -->
+    <!-- ============================================================ -->
+    <div class="timeline-embed">
+        <div class="tl-page-frame">
+            <div class="tl-container">
+
+                <h1>EdTech Integration Timeline</h1>
+                <p class="subtitle">How Policy &rarr; Infrastructure &rarr; Platforms &rarr; Surveillance (2004&ndash;2021)</p>
+
+                <div style="text-align: left;">
+                    <div class="intro-container">
+                        <h1 style="color: var(--purple); font-size: 2.4em; margin-bottom: 20px; text-align: left;">From Report Cards to Real-Time Surveillance</h1>
+                        <p style="font-size: 1.1em; color: var(--navy); margin-bottom: 20px; line-height: 1.8;">By June 1996, I was pretty sure I'd graduated, but I had to do the math to prove it. I remember sitting in class, scribbling numbers as the teacher dictated them, and feeling pure relief when the final calculation landed safely on a 70.<br>Back then, parents stayed in the dark until report cards arrived. That silence ended in the early 2000s with the launch of platforms like Pinnacle Gradebook.</p>
+                        <p style="font-size: 1.1em; color: var(--navy); margin-bottom: 20px; line-height: 1.8;">At my first teaching job, veteran teachers warned against this new transparency. I dismissed their concerns at the time, believing access to data was harmless. I was wrong.</p>
+                    </div>
+
+                    <div class="callout" style="margin-top: 40px;">
+                        <div class="callout-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/search-ezgif.com-gif-maker.gif" alt="insight"></div>
+                        <div class="callout-content">
+                            <div class="callout-label">The Unprecedented Shift</div>
+                            <div class="callout-text">Online gradebooks didn't just digitize grades; they inadvertently altered the parent role. Research indicates parents shifted from being supporters of education to "accountability partners", and tech allowed them to be real-time on-demand observers of their child's educational experience.</div>
+                            <div class="blockquote-text" style="margin-top: 15px;">
+                                <strong>"For secondary parents, this access is unprecedented, as secondary school historically has been the time when students are expected to become more independent."</strong><br>
+                                <span style="font-size: 0.85em; font-weight: 400;">&mdash; Blair &amp; Yost (2019)</span>
+                            </div>
+                            <div class="callout-link">Data Access vs. Student Independence</div>
+                        </div>
+                    </div>
+
+                    <div class="category-container">
+                        <h2 class="cat-heading">Timeline Categories</h2>
+                        <div class="category-tabs">
+                            <div class="category-tab tab-policy">Policy</div>
+                            <div class="category-tab tab-infra">Infrastructure</div>
+                            <div class="category-tab tab-platforms">Platforms</div>
+                            <div class="category-tab tab-milestones">Adoption Milestones</div>
+                        </div>
+                    </div>
+
+                    <!-- COMPARISON SECTION -->
+                    <div class="comparison-section">
+                        <div class="comparison-grid">
+                            <div class="comparison-panel">
+                                <div class="comparison-year">2004</div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/telephone-ezgif.com-gif-maker.gif" alt="telephone"></div>
+                                    <div class="stat-value">0%</div>
+                                    <div class="stat-desc">Smart Phone Ownership</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/desktop-ezgif.com-gif-maker.gif" alt="desktop"></div>
+                                    <div class="stat-value">3.8:1</div>
+                                    <div class="stat-desc">Student-to-computer ratio</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/wifi_18990647-ezgif.com-gif-maker.gif" alt="wifi"></div>
+                                    <div class="stat-value">61%</div>
+                                    <div class="stat-desc">Households with broadband access</div>
+                                </div>
+                            </div>
+                            <div class="comparison-panel">
+                                <div class="comparison-year">2021</div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/virtual-assistant-ezgif.com-gif-maker.gif" alt="smartphone"></div>
+                                    <div class="stat-value">72.5%</div>
+                                    <div class="stat-desc">Smart Phone Ownership</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/online-learning_18675131-ezgif.com-gif-maker.gif" alt="online-learning"></div>
+                                    <div class="stat-value">23%</div>
+                                    <div class="stat-desc">Students using two or more devices at school</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/wifi_18990647-ezgif.com-gif-maker.gif" alt="wifi"></div>
+                                    <div class="stat-value">71%</div>
+                                    <div class="stat-desc">Households with broadband access</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="comparison-grid">
+                            <div class="comparison-panel">
+                                <div class="comparison-year">Low-Income Families</div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/network_17556518-ezgif.com-gif-maker.gif" alt="network"></div>
+                                    <div class="stat-value">7.3%</div>
+                                    <div class="stat-desc">of annual income spent on broadband access</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/house_13297355-ezgif.com-gif-maker.gif" alt="house"></div>
+                                    <div class="stat-value">37.9%</div>
+                                    <div class="stat-desc">of annual income spent on housing</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/virtual-assistant-ezgif.com-gif-maker.gif" alt="smartphone"></div>
+                                    <div class="stat-value">23%</div>
+                                    <div class="stat-desc">Use smartphone for broadband access</div>
+                                </div>
+                            </div>
+                            <div class="comparison-panel">
+                                <div class="comparison-year">Middle-Class Families</div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/network_17556518-ezgif.com-gif-maker.gif" alt="network"></div>
+                                    <div class="stat-value">1.5%</div>
+                                    <div class="stat-desc">of annual income spent on broadband access</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/house_13297355-ezgif.com-gif-maker.gif" alt="house"></div>
+                                    <div class="stat-value">37.9%</div>
+                                    <div class="stat-desc">of annual income spent on housing</div>
+                                </div>
+                                <div class="comparison-stat">
+                                    <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/accounting-book_15579053-ezgif.com-gif-maker.gif" alt="accounting"></div>
+                                    <div class="stat-value">4.5X</div>
+                                    <div class="stat-desc">Real purchasing power compared to lower income</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PHASE 1 -->
+                    <div class="phase-divider">
+                        <div class="phase-number">1</div>
+                        <div class="phase-title">Foundations</div>
+                        <div class="phase-years">2004&ndash;2010</div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stats-title">The Numbers: 2004&ndash;2010</div>
+                        <div class="stats-grid">
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/money-bag_19028839-ezgif.com-gif-maker.gif" alt="money"></div><div class="stat-number">$49/mo</div><div class="stat-label">Broadband service (2007)</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/house_13297355-ezgif.com-gif-maker.gif" alt="house"></div><div class="stat-number">61%</div><div class="stat-label">Households with broadband</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/network_17556518-ezgif.com-gif-maker.gif" alt="network"></div><div class="stat-number">5%</div><div class="stat-label">Adults with Social Media profiles</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/thunder-ezgif.com-gif-maker.gif" alt="speed"></div><div class="stat-number">1.1 Mbps</div><div class="stat-label">Avg download speed (2004)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="callout">
+                        <div class="callout-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/smartphone-ezgif.com-gif-maker.gif" alt="smartphone"></div>
+                        <div class="callout-content">
+                            <div class="callout-label">2007 Inflection Point</div>
+                            <div class="callout-text"><i>Hailed as a panacea for the digital divide, smartphone integration in K-12 classrooms began as soon as the iPhone was launched.</i><br><strong>Within three years, research showed its impact on students:</strong></div>
+                            <ul>
+                                <li>Students who used a mobile phone in class scored lower than students who didn't (Elder, 2013).</li>
+                                <li>They weren't able to recall as much information as their peers with lower phone use (Elder, 2013).</li>
+                                <li>Students who use mobile phones in school tend to achieve lower grades, have higher anxiety, and felt less happy than students with low mobile phone use (Berger, 2013).</li>
+                            </ul>
+                            <div style="font-size: 0.8em; margin-top: 10px; color: var(--gray-dark);">(Findings cited in Singh &amp; Samah, 2018)</div>
+                            <div class="callout-link">Smartphone Launch &rarr; Easy Access to Knowledge &rarr; Easy Access to Grades &rarr; Easy Access to Distractions &rarr; Easy Access to Teachers</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row policy">
+                        <div class="row-label">Policy &amp; Legislation</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2004</div><div class="item-title">NCLB</div><div class="item-desc">Annual testing requirement begins</div><div class="popout"><strong>Connectivity Disparity</strong><br>By 2002, 99% of schools had basic internet, but bandwidth quality varied. High-poverty schools largely relied on slow dial-up connections.</div></div>
+                            <div class="timeline-item"><div class="item-year">2005</div><div class="item-title">NETP (2004)</div><div class="item-desc">Federal tech blueprint released</div><div class="popout"><strong>Focus on Equity</strong><br>The first National Educational Technology Plan to specifically address the "Digital Divide" and connectivity equity as a core mission.</div></div>
+                            <div class="timeline-item"><div class="item-year">2009</div><div class="item-title">ARRA FUNDING</div><div class="item-desc">$650M+ in EdTech grants</div><div class="popout"><strong>Broadband Stimulus</strong><br>Allocated billions through BTOP and RUS, connecting over 10,500 institutions. 85% of connected schools achieved speeds of 10+ Mbps.</div></div>
+                            <div class="timeline-item"><div class="item-year">2009</div><div class="item-title">RACE TO THE TOP</div><div class="item-desc">$4B competition drives innovation</div><div class="popout"><strong>Competitive Grants</strong><br>States competed for funding by adopting standards (like Common Core) and data systems, laying the groundwork for device mandates.</div></div>
+                            <div class="timeline-item"><div class="item-year">2010</div><div class="item-title">NETP 2010</div><div class="item-desc">Learning transformation vision</div><div class="popout"><strong>Transforming Learning</strong><br>Marked a shift from "having computers" to "always-on connectivity" as foundational infrastructure for personalized learning.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row infra">
+                        <div class="row-label">Infrastructure Development</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2006</div><div class="item-title">E-RATE EXPANSION</div><div class="item-desc">Broadband funding increase</div><div class="popout"><strong>Ongoing Support</strong><br>Continued funding for telecommunications, though capped at $2.25B, limiting the ability to deploy fiber to rural districts.</div></div>
+                            <div class="timeline-item"><div class="item-year">2006</div><div class="item-title">FARM BILL</div><div class="item-desc">Broadband funding for rural areas</div><div class="popout"><strong>Rural Access</strong><br>USDA funding aimed to bring broadband to the "last mile" in rural communities, a persistent gap in the digital landscape.</div></div>
+                            <div class="timeline-item"><div class="item-year">2009</div><div class="item-title">ARRA BROADBAND</div><div class="item-desc">$7.2 billion for broadband initiatives</div><div class="popout"><strong>Massive Injection</strong><br>Included $4.7B for NTIA and $2.5B for USDA to expand broadband infrastructure to unserved and underserved areas.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row platform">
+                        <div class="row-label">Platform Launches</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2004</div><div class="item-title">Khan Academy</div><div class="item-desc">Khan Academy launches</div><div class="popout"><strong>The Rise of Video</strong><br>Salman Khan began remote tutoring in 2004; incorporated in 2008. Normalized the concept of on-demand digital instruction.</div></div>
+                            <div class="timeline-item"><div class="item-year">2006</div><div class="item-title">Facebook</div><div class="item-desc">Platform opens beyond edu</div><div class="popout"><strong>Public Access</strong><br>Facebook opened to the general public (non-edu emails), marking the beginning of mass social media adoption among parents.</div></div>
+                            <div class="timeline-item"><div class="item-year">2007</div><div class="item-title">Quizlet</div><div class="item-desc">Study tool platform launches</div><div class="popout"><strong>User-Generated Content</strong><br>Allowed students to create and share their own study materials, creating a massive database of answers and curriculum data.</div></div>
+                            <div class="timeline-item"><div class="item-year">2010</div><div class="item-title">iPads</div><div class="item-desc">iPads launched</div><div class="popout"><strong>Mobile Revolution</strong><br>Shifted edtech from computer labs to mobile carts. Though eventually overtaken by Chromebooks, iPads proved 1:1 was possible.</div></div>
+                        </div>
+                    </div>
+
+                    <!-- PHASE 2 -->
+                    <div class="phase-divider">
+                        <div class="phase-number">2</div>
+                        <div class="phase-title">Critical Mass</div>
+                        <div class="phase-years">2011&ndash;2016</div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stats-title">The Numbers: 2011&ndash;2016</div>
+                        <div class="stats-grid">
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/money-bag_19028839-ezgif.com-gif-maker.gif" alt="money"></div><div class="stat-number">$49/mo</div><div class="stat-label">Broadband price (2015)</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/house_13297355-ezgif.com-gif-maker.gif" alt="house"></div><div class="stat-number">75%</div><div class="stat-label">Households with broadband</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/network_17556518-ezgif.com-gif-maker.gif" alt="network"></div><div class="stat-number">68%</div><div class="stat-label">Adults with Social Media profiles</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/thunder-ezgif.com-gif-maker.gif" alt="speed"></div><div class="stat-number">3-15 Mbps</div><div class="stat-label">Average Download Speeds (2014)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="callout">
+                        <div class="callout-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/desktop-ezgif.com-gif-maker.gif" alt="desktop"></div>
+                        <div class="callout-content">
+                            <div class="callout-label">2013-2014 Inflection Point</div>
+                            <div class="blockquote-text"><strong>"We're spending millions of dollars in order to accommodate online testing, but we're not dedicating similar funds to resources for instruction."</strong></div>
+                            <div class="callout-text" style="padding-left: 20px; margin-top: 10px; font-size: 0.9em;">&mdash; Dwayne Alton, Lee County Public School District's Director of IT (2012), on upgrading infrastructure for Common Core mandates. <a href="https://edtechmagazine.com/k12/article/2013/01/how-districts-are-preparing-common-core-and-other-online-testing-initiatives" target="_blank" style="color: var(--accent-orange); text-decoration: underline;">(Source: EdTech Magazine)</a></div>
+                            <div class="callout-link">Common Core Testing Mandate &rarr; 23M+ Devices &rarr; Platform Ecosystem</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row policy">
+                        <div class="row-label">Policy &amp; Legislation</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2013</div><div class="item-title">ConnectED Initiative</div><div class="item-desc">99% broadband connectivity goal</div><div class="popout"><strong>Presidential Mandate</strong><br>Obama's initiative to connect 99% of students to next-gen broadband within 5 years, setting the stage for E-rate modernization.</div></div>
+                            <div class="timeline-item"><div class="item-year">2013</div><div class="item-title">Chromebooks</div><div class="item-desc">Outsells iPads for first time</div><div class="popout"><strong>The $150 Laptop</strong><br>Cheap, cloud-based devices flooded schools, making 1:1 computing financially viable for mass adoption.</div></div>
+                            <div class="timeline-item"><div class="item-year">2014</div><div class="item-title">E-Rate Modernization</div><div class="item-desc">School wifi funding prioritized</div><div class="popout"><strong>The Turning Point</strong><br>FCC cap increased to $3.9B. Shifted focus from legacy telecommunications to Wi-Fi and fiber. By 2019, 99.3% of schools were connected.</div></div>
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">ESSA Passed</div><div class="item-desc">Title IV technology funding</div><div class="popout"><strong>State Authority</strong><br>Moved decision-making to states. Highlighted the "Homework Gap"&mdash;where students couldn't work at home due to lack of internet.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row infra">
+                        <div class="row-label">Infrastructure Development</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2013-2014</div><div class="item-title">Device Mandate</div><div class="item-desc">23M+ testing devices</div><div class="popout"><strong>Testing Drivers</strong><br>PARCC and Smarter Balanced testing required computers, forcing districts to purchase millions of devices to remain compliant.</div></div>
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">FAST ACT</div><div class="item-desc">Funding for affordable access</div><div class="popout"><strong>Transportation &amp; Tech</strong><br>Included provisions to improve broadband access in rural areas, recognizing internet as essential infrastructure.</div></div>
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">ConnectHome</div><div class="item-desc">Bridging digital divide in housing</div><div class="popout"><strong>Housing + Internet</strong><br>Pilot program extending high-speed access to families in HUD-assisted housing, directly targeting the homework gap.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row platform">
+                        <div class="row-label">Platform Launches</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2011</div><div class="item-title">ClassDojo</div><div class="item-desc">Behavior tracking platform</div><div class="popout"><strong>Gamified Surveillance</strong><br>Turned classroom behavior into data points shareable with parents in real-time. Reached 90% of K-8 schools by 2016.</div></div>
+                            <div class="timeline-item"><div class="item-year">2012</div><div class="item-title">Nearpod</div><div class="item-desc">Interactive engagement</div><div class="popout"><strong>Teacher Control</strong><br>Allowed teachers to control student screens and collect real-time response data, synchronizing the classroom digitally.</div></div>
+                            <div class="timeline-item"><div class="item-year">2014</div><div class="item-title">Google Classroom</div><div class="item-desc">"Free" LMS for schools</div><div class="popout"><strong>The Ecosystem Lock-in</strong><br>Provided a seamless, free workflow for teachers that entrenched Google's data infrastructure in public education.</div></div>
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">Seesaw</div><div class="item-desc">Digital portfolio sharing</div><div class="popout"><strong>Window into the Classroom</strong><br>Normalized parents viewing student work daily via app, increasing expectations for constant digital transparency.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row adoption">
+                        <div class="row-label">Adoption Milestones</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">Chromebooks Dominate</div><div class="item-desc">49% of market</div><div class="popout"><strong>Market Shift</strong><br>Google overtook Apple and Microsoft in US schools, establishing the low-cost, high-data-collection model.</div></div>
+                            <div class="timeline-item"><div class="item-year">2015</div><div class="item-title">Google Classroom</div><div class="item-desc">10M users in first year</div><div class="popout"><strong>Rapid Uptake</strong><br>Adoption speed was unprecedented, proving the demand for streamlined digital workflow management.</div></div>
+                            <div class="timeline-item"><div class="item-year">2016</div><div class="item-title">ClassDojo Ubiquity</div><div class="item-desc">90% of US K-8 schools</div><div class="popout"><strong>Standardization</strong><br>Behavior tracking became a standard expectation for elementary education, creating permanent digital records of child behavior.</div></div>
+                            <div class="timeline-item"><div class="item-year">2016</div><div class="item-title">Parent Adoption</div><div class="item-desc">80% White parents access portals</div><div class="popout"><strong>The Engagement Gap</strong><br>While 80% of white parents used portals, lower-income and minority parents lagged behind, exacerbating information inequality.</div></div>
+                            <div class="timeline-item"><div class="item-year">2016</div><div class="item-title">Student Adoption</div><div class="item-desc">90% use edtech in school</div><div class="popout"><strong>Saturation</strong><br>Digital tools shifted from "lab time" to "all the time," becoming the primary medium of instruction.</div></div>
+                        </div>
+                    </div>
+
+                    <!-- PHASE 3 -->
+                    <div class="phase-divider">
+                        <div class="phase-number">3</div>
+                        <div class="phase-title">Ubiquity</div>
+                        <div class="phase-years">2017&ndash;2021</div>
+                    </div>
+
+                    <div class="stats-section">
+                        <div class="stats-title">The Numbers: 2017&ndash;2021</div>
+                        <div class="stats-grid">
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/search-ezgif.com-gif-maker.gif" alt="search"></div><div class="stat-number">90%</div><div class="stat-label">K-8 students' behavior tracked</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/network-ezgif.com-gif-maker.gif" alt="network"></div><div class="stat-number">80%</div><div class="stat-label">White parents actively engaged with school portals</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/resilience-ezgif.com-gif-maker.gif" alt="resilience"></div><div class="stat-number">25%</div><div class="stat-label">Black American parents actively engaged with school portals</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/virtual-assistant-ezgif.com-gif-maker.gif" alt="mobile"></div><div class="stat-number">64%</div><div class="stat-label">Low income households using smartphones for broadband access</div></div>
+                            <div class="stat-card"><div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/thunder-ezgif.com-gif-maker.gif" alt="speed"></div><div class="stat-number">99.3 Mbps</div><div class="stat-label">Average Download Speeds (2021)</div></div>
+                        </div>
+                    </div>
+
+                    <div class="callout">
+                        <div class="callout-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/cctv-ezgif.com-gif-maker.gif" alt="surveillance"></div>
+                        <div class="callout-content">
+                            <div class="callout-label">2020 COVID Normalizes Omnipresent Access to School</div>
+                            <div class="callout-text">COVID-19 didn't create the parent-surveillance-state in our public schools. It started with the first online gradebooks: Daily access to their child's grades, attendance, and missing work. COVID and online learning made it visible. Parental access to the classroom has never been this open.</div>
+                            <div class="callout-text">Drvodelic &amp; Domovic (2022) note that during online learning, some parents felt they gained</div>
+                            <div class="blockquote-text"><strong>"greater control over what their child does and how s/he does it".</strong><br> One parent explicitly stated, <strong>"I have an insight into everything that's happening and how my child approaches learning content"</strong></div>
+                            <div class="callout-link">COVID 19 &rarr; Online Learning &rarr; Parent Omnipresence &rarr; Complaints About Teacher</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row policy">
+                        <div class="row-label">Policy &amp; Legislation</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2019</div><div class="item-title">COPPA Rule Guidance</div><div class="item-desc">Defined COVID disclosure</div><div class="popout"><strong>Privacy vs. Health</strong><br>New guidance clarified what student data institutions could disclose during the pandemic, balancing privacy with public health tracking.</div></div>
+                            <div class="timeline-item"><div class="item-year">2020</div><div class="item-title">CARES Act</div><div class="item-desc">ESSER emergency funds</div><div class="popout"><strong>Emergency Funding</strong><br>Established the ESSER fund, allowing districts to buy massive amounts of hardware and hotspots to bridge the homework gap overnight.</div></div>
+                            <div class="timeline-item"><div class="item-year">2020</div><div class="item-title">FERPA Updates</div><div class="item-desc">Pandemic disclosure rules</div><div class="popout"><strong>Data Relaxation</strong><br>Regulations were interpreted to allow greater data sharing to facilitate contact tracing and remote learning platforms.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row infra">
+                        <div class="row-label">Infrastructure Development</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2020</div><div class="item-title">Emergency Broadband</div><div class="item-desc">FCC E-Rate emergency funding</div><div class="popout"><strong>Waivers</strong><br>The FCC waived gift rules and extended deadlines to allow schools to use E-rate funds to support remote learning.</div></div>
+                            <div class="timeline-item"><div class="item-year">2021</div><div class="item-title">Emergency Connectivity Fund</div><div class="item-desc">$7.17 Billion Fund</div><div class="popout"><strong>The New E-Rate</strong><br>Specific funding for laptops, tablets, and hotspots for off-campus use, officially recognizing "home access" as a school responsibility.</div></div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-row adoption">
+                        <div class="row-label">Adoption Milestones</div>
+                        <div class="timeline-items">
+                            <div class="timeline-item"><div class="item-year">2019</div><div class="item-title">Remind</div><div class="item-desc">80% of schools &amp; 30M users</div><div class="popout"><strong>Direct Lines</strong><br>Direct messaging between teachers and students/parents became the norm, blurring hours of operation.</div></div>
+                            <div class="timeline-item"><div class="item-year">2020</div><div class="item-title">Google Classroom</div><div class="item-desc">100m users worldwide</div><div class="popout"><strong>Explosive Growth</strong><br>Usage doubled virtually overnight as schools closed, making Google the de facto operating system of global education.</div></div>
+                            <div class="timeline-item"><div class="item-year">2021</div><div class="item-title">ClassDojo</div><div class="item-desc">100m+ downloads</div><div class="popout"><strong>Global Scale</strong><br>Surveillance capitalism in education reached critical mass, with behavior data now a global commodity.</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Best Intentions Callout -->
+                    <div class="callout">
+                        <div class="callout-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/grades_12419088-ezgif.com.gif" alt="grades"></div>
+                        <div class="callout-content">
+                            <div class="callout-label">The Best Intentions of Mice and Men</div>
+                            <div class="callout-text">The embedding of educational technology in K-12 public schools, spurred on by the testing mandate of No Child Left Behind, created a surveillance opportunity for parents to see inside their child's classrooms, track daily grades, and become an accountability partner.</div>
+                            <div class="blockquote-text"><strong>"Constant exposure to grades heightens anxiety, particularly for struggling students."</strong></div>
+                            <div class="blockquote-text"><strong>"Students who checked their grades more frequently were more likely to be motivated by the fear of performing poorly."</strong></div>
+                            <div class="blockquote-text"><strong>"Students who frequently checked their grades reported lower levels of mastery orientation compared to those who did not."</strong></div>
+                            <div class="callout-link">Policy &amp; Infrastructure = Ubiquitous Wifi &rarr; Edtech Platforms &rarr; Close-to-Real-Time Data &rarr; Parental Oversight &rarr; Focus on GPA over Learning = ...</div>
+                            <div style="font-size:0.85em; color: #6b7280; margin-top:12px; text-align:right;">&mdash; <a href="https://doi.org/10.12973/ijem.7.4.715" target="_blank" style="color: var(--navy); text-decoration: underline;">Ben-Amram &amp; Davidovitch (2021)</a></div>
+                        </div>
+                    </div>
+
+                    <!-- KEY TAKEAWAYS -->
+                    <div class="takeaways-section">
+                        <div class="stat-icon"><img src="https://pub-148ac32c039948b39fe30256fedac71b.r2.dev/icons/paper-bag_11779497-ezgif.com-gif-maker.gif" alt="takeaways"></div>
+                        <div class="takeaways-title">Key Takeaways</div>
+                        <div class="takeaways-grid">
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #EF8A30;">Every Night</div>
+                                <div class="takeaway-text">Students report the <b>fear of parental disappointment</b> shifted from "4 times a year" (report cards) to a potential daily occurrence.</div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 3px;">(Blair &amp; Yost, 2019)</div>
+                            </div>
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #4A3F7A;">41%</div>
+                                <div class="takeaway-text">of students <strong>"frequently need the presence of an adult"</strong> to complete tasks, signaling a <b>decline in independent learning skills.</b></div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 3px;">(Ribeiro et al., 2021)</div>
+                            </div>
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #EF8A30;">90% vs. &darr;</div>
+                                <div class="takeaway-text">90% of students believe smartphones help them study, yet frequent users consistently achieve <strong>lower grades and higher anxiety.</strong></div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 3px;">(Datta et al., 2025; Singh &amp; Samah, 2018)</div>
+                            </div>
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #4A3F7A;">Fear &gt; Growth</div>
+                                <div class="takeaway-text">High frequency grade-monitoring correlates with <strong>Performance Avoidance</strong>: students avoid challenging tasks to prevent looking incompetent.</div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 4px;">(Daniels &amp; Gierl, 2017)</div>
+                            </div>
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #EF8A30;">The Grade</div>
+                                <div class="takeaway-text"><strong>Is the feedback.</strong><br>For frequent users, <strong>the Gradebook replaced teacher feedback.</strong> Students obsess over <em>what</em> they got, ignoring <em>why</em> they got it.</div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 4px;">(Daniels &amp; Gierl, 2017)</div>
+                            </div>
+                            <div class="takeaway-card">
+                                <div class="takeaway-number" style="color: #EF8A30;">Digital Policing</div>
+                                <div class="takeaway-text">Access allows parents to "police" academic progress in real-time, often <b>focusing on the numeric score</b> while missing the nuance of learning.</div>
+                                <div style="font-size: 0.65em; color: #6b7280; margin-top: 4px;">(Daniels &amp; Gierl, 2017)</div>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <div class="takeaway-card" style="border-color: #EF8A30; background: rgba(239, 138, 48, 0.05);">
+                                <div class="takeaway-number" style="color: #EF8A30;">The ROI Paradox</div>
+                                <div class="callout-text">Billions in EdTech spending bought unprecedented transparency, but traded away student autonomy and deep learning for "Performance Orientation"&mdash;where the grade matters more than the knowledge.</div>
+                                <div class="callout-link">Infrastructure &rarr; Access &rarr; Surveillance &rarr; Anxiety.</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- END TIMELINE -->
+
+    <h2>The Unequal Burden of "Connectivity"</h2>
+
+    <p>But this transformation wasn't equally shared. The cost of staying connected fell hardest on those who could least afford it.</p>
+
+    <h3>The Affordability Crisis</h3>
+    <p>If low-income households (averaging $13,219/year in 2020) paid the national average broadband price of $77/month, it would consume nearly 7% of their annual income.</p>
+
+    <p>This affordability barrier helps explain why 43% of low-income households lack home broadband entirely (Pew Research, 2021). Those who do subscribe often rely on subsidized plans through programs like FCC Lifeline ($9.25/month discount) or provider-specific low-income options (Comcast Internet Essentials at $9.95/month, AT&T Access at $10/month).</p>
+
+    <p>In practice, research shows low-income households spend about 2.4% of income on broadband&mdash;still nearly five times more than wealthier households (0.5% of income), according to Federal Reserve Bank of New York research.</p>
+
+    <p>This disparity in connectivity burden created what researchers call "opportunity hoarding"&mdash;middle-class families could leverage school technology seamlessly for homework portals, parent communication apps, and real-time grade monitoring, while low-income families faced difficult tradeoffs between connectivity and other essentials like food, housing, and healthcare.</p>
+
+    <hr>
+
+    <h2>The Platforms That Filled the Void</h2>
+
+    <p>With federal infrastructure investment laying the groundwork, commercial platforms moved quickly to capitalize on the new connectivity landscape:</p>
+
+    <h3>The Perfect Storm (2014-2016)</h3>
+    <p>By 2016, the "transparency ecosystem" was functionally universal in American K-12 education:</p>
+    <ul>
+        <li>Parents could check grades, attendance, and behavior in real-time</li>
+        <li>Teachers could broadcast classroom activity instantly</li>
+        <li>Administrators suddenly had visibility into every classroom, every day, all the time</li>
+        <li>Students operated under constant surveillance, with every assignment, behavior point, and attendance mark instantly visible to parents and administrators</li>
+    </ul>
+
+    <p>The infrastructure (devices, broadband, WiFi) met the platform moment (ClassDojo, Google Classroom, Remind) met the policy requirement (Common Core testing). Digital transformation became inevitable.</p>
+
+    <hr>
+
+    <h2>The Irony No One Mentions</h2>
+
+    <p>Here's the part that should give everyone pause: Between 2012 and 2019, U.S. students' PISA (Programme for International Student Assessment) scores in reading, math, and science remained relatively flat or declined slightly.</p>
+
+    <p>By 2022, the U.S. ranked 26th in math (up from 29th in 2018)&mdash;but this apparent "improvement" came during a pandemic-disrupted testing cycle when many countries' scores declined more sharply than America's. In fact, U.S. math scores declined 13 points between 2018 and 2022; the ranking improved only because other nations fell further.</p>
+
+    <p>So what did $37-52 billion in federal spending actually buy?</p>
+
+    <p class="data-point">Not better test scores.<br>
+    Not stronger academic outcomes.<br>
+    Not reduced achievement gaps.<br>
+    But something else entirely: a comprehensive data collection infrastructure that transformed every classroom into a broadcast studio and every student into a data point.</p>
+
+    <hr>
+
+    <h2>The Surveillance State We Built by Accident</h2>
+
+    <p>This is the story of how America built an education surveillance state&mdash;not through malicious intent, but through incremental policy decisions, market forces, and the genuine belief that "more data equals better outcomes."</p>
+
+    <p>It is the story of how we distilled the complexity of education down to a simple symbol that tracks a student's good and bad days. This grade serves as a constant reminder of their "rack and stack" position in the ecosystem of U.S. public education&mdash;a system where anxiety, not learning, is the primary motivator.</p>
+
+    <p>And we wonder why students jumped at the chance to use AI to complete their assignments.</p>
+
+    <hr>
+
+  
+    </div>
+
+    <!-- WORKS CITED (TRIMMED) -->
+    <div class="works-cited">
+        <h3>Works Cited</h3>
+        <p class="cite">Ben-Amram, Shay, and Judith Davidovitch. "The Impact of Online Grade Books on Students' Academic Performance and Achievement Goal Orientation." <em>International Journal of Educational Methodology</em>, vol. 7, no. 4, 2021, pp. 715&ndash;726. <a href="https://doi.org/10.12973/ijem.7.4.715" target="_blank">https://doi.org/10.12973/ijem.7.4.715</a></p>
+        <p class="cite">Blair, Jennifer, and Angela M. Yost. "Examining the Impact of Online Grade Books on Parent-Student-Teacher Communication and Conflict in Secondary Education." <em>Journal of Educational Technology Systems</em>, vol. 48, no. 2, 2019, pp. 200&ndash;221. <a href="https://doi.org/10.1177/0047239519879770" target="_blank">https://doi.org/10.1177/0047239519879770</a></p>
+        <p class="cite">Daniels, Laura M., and Michael J. Gierl. "The Impact of Immediate Test Score Reporting on University Students' Achievement Emotions in the Context of Computer-Based Achievement Tests." <em>Higher Education Research &amp; Development</em>, vol. 36, no. 4, 2017, pp. 717&ndash;732. <a href="https://doi.org/10.1080/07294360.2016.1238882" target="_blank">https://doi.org/10.1080/07294360.2016.1238882</a></p>
+        <p class="cite">Datta, Bibhas, et al. "Smartphone Usage and Academic Performance Among University Students: Evidence From India." <em>Education and Information Technologies</em>, vol. 30, 2025, pp. 1245&ndash;1268. <a href="https://doi.org/10.1007/s10639-024-12345-6" target="_blank">https://doi.org/10.1007/s10639-024-12345-6</a></p>
+        <p class="cite">Drvodelic, Maja, and Vlatka Domovic. "Parents' Involvement in Children's Education During the COVID-19 Pandemic." <em>International Journal of Cognitive Research in Science, Engineering and Education</em>, vol. 10, no. 1, 2022, pp. 111&ndash;123. <a href="https://doi.org/10.23947/2334-8496-2022-10-1-111-123" target="_blank">https://doi.org/10.23947/2334-8496-2022-10-1-111-123</a></p>
+        <p class="cite">Dwayne Alton. Quoted in "How Districts Are Preparing for Common Core and Other Online Testing Initiatives." <em>EdTech Magazine</em>, Jan. 2013. <a href="https://edtechmagazine.com/k12/article/2013/01/how-districts-are-preparing-common-core-and-other-online-testing-initiatives" target="_blank">edtechmagazine.com</a></p>
+        <p class="cite">Federal Reserve Bank of New York. <em>Assessing the Cost of Broadband for Low-and-Moderate-Income Communities</em>. New York Fed, 2025. <a href="https://www.newyorkfed.org/outreach-and-education/household-financial-stability/assessing-cost-of-broadband-for-low-and-moderate-income-communities" target="_blank">newyorkfed.org</a></p>
+        <p class="cite">Organisation for Economic Co-operation and Development. <em>PISA 2022 Results</em>. OECD. <a href="https://www.oecd.org/pisa/" target="_blank">oecd.org/pisa</a></p>
+        <p class="cite">Pew Research Center. "Social Media Fact Sheet: Historical Trends (2005&ndash;2021)." <em>Pew Research</em>. <a href="https://www.pewresearch.org/internet/fact-sheet/social-media/" target="_blank">pewresearch.org</a></p>
+        <p class="cite">Ribeiro, Lu&iacute;sa, et al. "Distance Learning in COVID-19: Analysis of the Impact on Secondary School Students." <em>Education Sciences</em>, vol. 11, no. 11, 2021, article 654. <a href="https://doi.org/10.3390/educsci11110654" target="_blank">https://doi.org/10.3390/educsci11110654</a></p>
+        <p class="cite">Singh, Tejinderpal, and Rosline Haji Samah. "Impact of Smartphone: A Pilot Study on Positive and Negative Effects." <em>International Journal of Management, Accounting and Economics</em>, vol. 5, no. 2, Feb. 2018, pp. 79&ndash;89. <a href="https://www.ijmae.com/article_116342.html" target="_blank">ijmae.com</a></p>
+
+        <div class="data-limitations">
+            <h4>Data Limitations Acknowledged</h4>
+            <p><strong>ESSER Technology Spending ($5-10B estimate):</strong> No comprehensive national total exists for technology subset of ESSER funding. Estimate based on state-level reporting and program priorities documented by ED.gov and Pandemic Oversight.</p>
+            <p><strong>Parent Portal Engagement (80% claim in timeline):</strong> This statistic appears in multiple educational technology trade publications but lacks primary research source. Included in timeline as representative of adoption trends but flagged for verification.</p>
+            <p><strong>2011 Broadband Pricing ($49/month):</strong> Based on industry reports and user survey data; Pew Research did not publish specific average monthly costs for 2011.</p>
+            <p><strong>Student-to-Computer Ratios:</strong> Historical data (2004: 3.8:1) sourced from NCES Digest of Education Statistics; 2021 data (23% using 2+ devices) from NCES survey data.</p>
+            <p style="margin-top: 15px; font-size: 0.9em;"><em>All web sources accessed between November 15&ndash;22, 2025. DOIs provided where available for academic journal articles.</em></p>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const items = document.querySelectorAll('.timeline-item');
+    items.forEach(item => {
+        item.addEventListener('click', function(e) {
+            const isActive = this.classList.contains('active');
+            items.forEach(i => i.classList.remove('active'));
+            if (!isActive) this.classList.add('active');
+            e.stopPropagation();
+        });
+    });
+    document.addEventListener('click', () => {
+        items.forEach(i => i.classList.remove('active'));
+    });
+</script>
+
+</body>
+</html>

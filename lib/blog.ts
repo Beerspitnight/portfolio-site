@@ -10,6 +10,7 @@ export interface PostFrontmatter {
   date: string;
   excerpt: string;
   tags: string[];
+  externalUrl?: string;
 }
 
 export interface Post {

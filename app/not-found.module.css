@@ -1,0 +1,23 @@
+.container {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.message {
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  margin-bottom: 32px;
+}
+
+.link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--color-accent);
+}

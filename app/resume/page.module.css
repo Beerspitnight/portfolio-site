@@ -1,0 +1,128 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 40px;
+}
+
+.downloadBtn {
+  display: inline-block;
+  border: 2px solid var(--color-text);
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.downloadBtn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.sectionTitle {
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--color-rule);
+  margin-bottom: 20px;
+}
+
+.summaryText {
+  font-family: var(--font-body);
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.skillGroup {
+  margin-bottom: 16px;
+}
+
+.skillLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.role {
+  border-left: 3px solid var(--color-accent);
+  padding-left: 16px;
+  margin-bottom: 28px;
+}
+
+.roleHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.roleTitle {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.roleDates {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+.roleCompany {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: 4px 0 12px;
+}
+
+.achievements {
+  list-style: disc;
+  padding-left: 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+.achievements li {
+  margin-bottom: 6px;
+}
+
+.eduItem {
+  margin-bottom: 8px;
+}
+
+.eduDegree {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.eduSchool {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.certItem {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.certIssuer {
+  color: var(--color-text-tertiary);
+  font-size: 11px;
+}

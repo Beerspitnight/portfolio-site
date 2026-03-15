@@ -11,15 +11,7 @@ export default function Footer() {
         >
           Email
         </a>
-        <a
-          href="https://linkedin.com/in/brianmcmanus"
-          className={styles.link}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-        <a
+<a
           href="https://github.com/brianmcmanus"
           className={styles.link}
           target="_blank"

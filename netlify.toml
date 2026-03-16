@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
+  NEXT_PUBLIC_GA_MEASUREMENT_ID = "G-VY27JTZDRH"
 
 [[redirects]]
   from = "/*"

@@ -12,7 +12,7 @@ export default function Footer() {
           Email
         </a>
 <a
-          href="https://github.com/brianmcmanus"
+          href="https://github.com/beerspitnight"
           className={styles.link}
           target="_blank"
           rel="noopener noreferrer"

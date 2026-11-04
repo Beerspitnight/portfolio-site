@@ -11,15 +11,18 @@ export default function AboutPage() {
       <h1 className={styles.title}>About</h1>
       <div className={styles.content}>
         <p>
-          I&apos;m Brian McManus, a Help Desk Professional with over a decade of
-          experience supporting users across education and market research. I&apos;ve
-          worked in Thailand, Dubai, and the US, helping people solve technical
-          problems and get more out of their tools.
+          I&apos;m Brian McManus, a school administrator and ELA educator based in
+          New Jersey. I taught high school English for ten years in Florida and
+          Beijing, then moved into school leadership in Beijing, Dubai and South
+          Brunswick, NJ, where I coached a 26-teacher English department and
+          designed professional development for 190+ educators.
         </p>
         <p>
-          When I&apos;m not troubleshooting, I&apos;m exploring web development
-          with React, Node.js, and modern tooling. This site is built with
-          Next.js and deployed on Netlify.
+          I care about data that changes what happens in a classroom. Schools
+          have more data points than anyone can act on, so I built an i-Ready
+          dashboard that helps teachers find the specific, granular support a
+          student needs when broad interventions haven&apos;t moved their
+          achievement. This site is built with Next.js and deployed on Netlify.
         </p>
       </div>
       <div className={styles.links}>

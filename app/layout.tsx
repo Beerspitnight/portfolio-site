@@ -7,7 +7,7 @@ import '@/styles/globals.css';
 export const metadata: Metadata = {
   title: 'Brian McManus',
   description:
-    'Help Desk Professional with 10+ years delivering technical support across on-premise and SaaS environments.',
+    'School administrator and ELA educator with 20+ years in K–12 education: English teaching, teacher coaching, professional development and i-Ready data.',
 };
 
 export default function RootLayout({

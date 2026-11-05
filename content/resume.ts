@@ -24,7 +24,7 @@ export interface Certification {
 }
 
 export const summary =
-  'School administrator with 20+ years in K–12 education, including 10 years teaching high school English and 6 years as an assistant principal in New Jersey and Dubai. Coached a 26-teacher English department through observation cycles, lesson planning and unit design aligned to the NJ Student Learning Standards for ELA, and designs professional development for audiences of 190+ educators. Facilitates data meetings that turn i-Ready and MAP results into action plans, and built an i-Ready data dashboard for teachers, leaders and specialists.';
+  'School administrator with 20+ years in K–12 education, including 10 years teaching high school English and 6 years as an assistant principal in New Jersey and Dubai. Coached a 26-teacher English department on unit design aligned to the NJ Student Learning Standards for ELA, and designs professional development for audiences of 190+ educators. Facilitates data meetings that turn i-Ready and MAP results into student action plans, and built an i-Ready data dashboard for teachers, leaders and specialists.';
 
 export const skillCategories: SkillCategory[] = [
   {

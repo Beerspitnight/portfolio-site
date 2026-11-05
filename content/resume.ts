@@ -15,7 +15,7 @@ export interface Experience {
 export interface Education {
   degree: string;
   school: string;
-  year: string;
+  year?: string;
 }
 
 export interface Certification {
@@ -24,90 +24,122 @@ export interface Certification {
 }
 
 export const summary =
-  'Help Desk Professional with 10+ years delivering technical support across on-premise and SaaS environments, resolving 200+ monthly tickets with up to 96% satisfaction using Zendesk, Jira, TeamViewer, and Microsoft Remote Desktop (RDP). Proficient in hardware, software, and network troubleshooting with exposure to .NET, REST APIs, SQL, React, and Node.js.';
+  'School administrator with 20+ years in K–12 education, including 10 years teaching high school English and 6 years as an assistant principal in New Jersey and Dubai. Coached a 26-teacher English department on unit design aligned to the NJ Student Learning Standards for ELA, and designs professional development for audiences of 190+ educators. Facilitates data meetings that turn i-Ready and MAP results into student action plans, and built an i-Ready data dashboard for teachers, leaders and specialists.';
 
 export const skillCategories: SkillCategory[] = [
   {
-    category: 'Ticketing & ITSM',
-    skills: ['Zendesk', 'Jira', 'Ticketing Systems', 'SLA Management', 'Knowledge Base Management'],
+    category: 'Professional Learning',
+    skills: ['PD Design & Facilitation', 'Adult Learning', 'Instructional Coaching', 'Observation & Feedback Cycles', 'Professional Learning Communities'],
   },
   {
-    category: 'Remote Support',
-    skills: ['TeamViewer', 'Microsoft Remote Desktop (RDP)', 'Screen Sharing', 'Remote Troubleshooting'],
+    category: 'ELA Curriculum & Standards',
+    skills: ['Common Core State Standards (ELA)', 'NJ Student Learning Standards (ELA)', 'Concept-Based Teaching', 'Explicit Instruction', 'Science of Learning', 'Curriculum & Assessment Alignment'],
   },
   {
-    category: 'Operating Systems',
-    skills: ['Windows 10/11', 'macOS', 'Chrome OS', 'iOS', 'Android'],
+    category: 'Data & Assessment',
+    skills: ['i-Ready', 'MAP Growth', 'Data Meetings & Action Planning', 'Formative Assessment'],
   },
   {
-    category: 'Productivity & Cloud',
-    skills: ['Microsoft 365', 'Google Workspace', 'Outlook', 'Teams', 'SharePoint', 'Moodle LMS'],
-  },
-  {
-    category: 'Development Exposure',
-    skills: ['.NET', 'REST APIs', 'SQL', 'React', 'Node.js'],
-  },
-  {
-    category: 'Hardware',
-    skills: ['Desktops', 'Laptops', 'Printers', 'Projectors', 'Interactive Displays', 'Mobile Devices'],
+    category: 'Implementation & EdTech',
+    skills: ['Program Implementation & Evaluation', 'Blended & Adaptive Learning', 'Moodle', 'H5P', 'SCORM', 'Canvas'],
   },
 ];
 
 export const experiences: Experience[] = [
   {
-    title: 'Help Desk Support Specialist',
-    company: 'MMMarket Research',
-    location: 'Lakewood, NJ',
-    startDate: 'Jul 2022',
-    endDate: 'Dec 2025',
+    title: 'Co-Founder & Co-Principal, Operations',
+    company: 'ngenAOS',
+    location: 'Seaside Heights, NJ',
+    startDate: 'Jul 2026',
+    endDate: 'Present',
     achievements: [
-      'Resolved 200+ monthly help desk tickets via live chat, email, and phone, maintaining a 92% CSAT rate by diagnosing software, hardware, and system configuration issues.',
-      'Developed and maintained knowledge base articles and support documentation, reducing repeat inquiries by 20% and improving first-contact resolution rates.',
-      'Collaborated with IT, development, and customer success teams to escalate and track complex issues through Jira, accelerating resolution time and increasing user retention.',
+      'Co-founded a website and Answer Engine Optimization (AEO) service for New Jersey shore businesses; after three months building the operating infrastructure, signed 6 clients and launched 4 managed sites.',
+      'Runs the client side end to end, from cold calls and presentations to business owners through proposals, contracts, design, onboarding and quality checks, while managing several client projects at once.',
+      'Prepares design and content packages for a developer co-founder’s automated build process and reviews each site before launch.',
     ],
   },
   {
-    title: 'EdTech Support Director',
-    company: 'Dunecrest International School',
-    location: 'Dubai, UAE',
+    title: 'Team Principal',
+    company: 'Lucid North LLC',
+    location: 'Toms River, NJ',
+    startDate: 'Jul 2025',
+    endDate: 'Present',
+    achievements: [
+      'Leads development of Harry Llama, an AI-powered substitute-scheduling platform for K–12 schools, piloting and refining it with New Jersey school leaders.',
+      'Conducts discovery calls with district administrators across New Jersey to understand staffing needs and validate the product.',
+      'Develops outreach and sales materials matched to the challenges districts describe.',
+    ],
+  },
+  {
+    title: 'Assistant Principal',
+    company: 'South Brunswick High School',
+    location: 'South Brunswick, NJ',
     startDate: 'Jul 2020',
-    endDate: 'Jun 2022',
+    endDate: 'Jun 2024',
     achievements: [
-      'Delivered Tier 1 technical support to 100+ monthly users in person, achieving a 96% satisfaction rate while managing the academic software portfolio including LMS, Google Workspace, and Microsoft 365.',
-      'Trained 60+ faculty and staff through one-on-one coaching and group workshops, increasing technology adoption across classroom instruction.',
-      'Partnered with IT to troubleshoot hardware and software issues, manage user accounts, and maintain a secure digital environment for 500+ end users.',
-      'Created user-friendly guides and FAQs that empowered end users to self-resolve common issues, reducing support dependency by 15%.',
+      'Coached a 26-teacher English department through observation cycles, summative meetings and feedback, lesson planning and unit enhancement grounded in Science of Learning principles.',
+      'Strengthened ELA units with concept-based teaching, explicit instruction and assessments aligned to the taught curriculum and the NJ Student Learning Standards for ELA.',
+      'Designed and facilitated professional development for 190+ educators using active learning, cognitive load theory and formative assessment, leading to a 31% rise in student engagement and 28% improvement in knowledge retention.',
+      'Facilitated structured assessment-data meetings with special education teachers, reading interventionists and other specialists, turning results into action plans for individual students.',
+      'Directed a multi-phase curriculum audit and introduced shared rubrics, improving alignment between taught and assessed curriculum by 44%.',
+      'Rolled out blended learning tools and adaptive platforms across departments, raising implementation consistency by 34%.',
     ],
   },
   {
-    title: 'Technology Support Teacher',
-    company: 'International School of the Eastern Seaborn',
-    location: 'Chonburi, Thailand',
-    startDate: 'Jul 2015',
+    title: 'Assistant Principal of Academics',
+    company: 'Universal American School',
+    location: 'Dubai, UAE',
+    startDate: 'Jul 2018',
     endDate: 'Jun 2020',
     achievements: [
-      'Provided first-response technical support to educators, diagnosing and resolving issues with interactive whiteboards, projectors, student devices, Google Workspace, Microsoft 365, and LMS Moodle.',
-      'Delivered just-in-time coaching to teaching staff on educational software, translating technical functions into practical classroom applications.',
+      'Coached English teachers through observation cycles, feedback and lesson planning, strengthening unit design and assessment alignment.',
+      'Led cross-department alignment to the Common Core State Standards for grades 6–12, reaching 97% curricular alignment and improving instructional consistency by 34%.',
+      'Delivered virtual professional development for 70+ educators using Moodle, H5P, SCORM content and branching-scenario modules, increasing engagement by 26%.',
+      'Built a technology adoption framework tied to instructional goals and data privacy, reallocating 22% of the technology budget and cutting procurement time by 33%.',
+    ],
+  },
+  {
+    title: 'Strategic Learning Coordinator',
+    company: 'International School of Beijing',
+    location: 'Beijing, PRC',
+    startDate: 'Jul 2015',
+    endDate: 'Jun 2018',
+    achievements: [
+      'Built onboarding programs for new hires, using data and feedback to raise new-staff satisfaction from 65% to 92% in three years.',
+      'Designed and scaled experiential learning programs across five countries, growing student participation from 18% to 67%.',
+    ],
+  },
+  {
+    title: 'High School English Teacher',
+    company: 'International School of Beijing',
+    location: 'Beijing, PRC',
+    startDate: 'Jun 2008',
+    endDate: 'Jul 2015',
+    achievements: [
+      'Developed and taught a critical thinking curriculum for non-IB high school English courses within the Common Core framework, strengthening students’ reading comprehension and analytical writing.',
+      'Led teacher professional learning communities focused on assessment practices and instructional innovation.',
+    ],
+  },
+  {
+    title: 'High School English Teacher',
+    company: 'Everglades High School',
+    location: 'Miramar, FL',
+    startDate: 'Jun 2005',
+    endDate: 'Jul 2008',
+    achievements: [
+      'Designed student-centered learning experiences that increased engagement and built a growth mindset in learners.',
     ],
   },
 ];
 
 export const education: Education[] = [
-  {
-    degree: 'Master of Writing & Literature',
-    school: 'Deakin University, Melbourne, Australia',
-    year: '2011',
-  },
-  {
-    degree: 'Bachelor of Science in Marketing',
-    school: 'York College of Pennsylvania, York, PA',
-    year: '2000',
-  },
+  { degree: 'M.A., Writing & Literature', school: 'Deakin University' },
+  { degree: 'M.Ed., International Secondary Education', school: 'The College of New Jersey' },
+  { degree: 'Post-Graduate Certificate, Educational Leadership', school: 'The College of New Jersey' },
+  { degree: 'B.S., Marketing', school: 'York College of Pennsylvania' },
 ];
 
 export const certifications: Certification[] = [
-  { name: 'Microsoft IT Support Specialist Professional Certificate', issuer: 'Microsoft' },
-  { name: 'Google IT Support Professional Certificate', issuer: 'Google' },
-  { name: 'Gemini Teacher Certification', issuer: 'Google' },
-  { name: 'Adobe Creative Educator (ACE) Level 1', issuer: 'Adobe' },
+  { name: 'Council of International Schools — International Evaluation Team Member', issuer: 'Affiliation' },
+  { name: 'Middle States Commission — Peer Evaluator', issuer: 'Affiliation' },
 ];

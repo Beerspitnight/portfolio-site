@@ -33,7 +33,7 @@ export default function ResumePage() {
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Technical Skills</h2>
+        <h2 className={styles.sectionTitle}>Core Competencies</h2>
         {skillCategories.map((cat) => (
           <div key={cat.category} className={styles.skillGroup}>
             <p className={styles.skillLabel}>{cat.category}</p>
@@ -49,7 +49,7 @@ export default function ResumePage() {
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Professional Experience</h2>
         {experiences.map((exp) => (
-          <div key={exp.company} className={styles.role}>
+          <div key={`${exp.company}-${exp.title}`} className={styles.role}>
             <div className={styles.roleHeader}>
               <span className={styles.roleTitle}>{exp.title}</span>
               <span className={styles.roleDates}>
@@ -75,18 +75,17 @@ export default function ResumePage() {
             <span className={styles.eduDegree}>{edu.degree}</span>
             {' '}&mdash;{' '}
             <span className={styles.eduSchool}>
-              {edu.school}, {edu.year}
+              {edu.school}{edu.year ? `, ${edu.year}` : ''}
             </span>
           </div>
         ))}
       </section>
 
       <section className={styles.section}>
-        <h2 className={styles.sectionTitle}>Certifications</h2>
+        <h2 className={styles.sectionTitle}>Professional Affiliations</h2>
         {certifications.map((cert) => (
           <div key={cert.name} className={styles.certItem}>
-            {cert.name}{' '}
-            <span className={styles.certIssuer}>| {cert.issuer}</span>
+            {cert.name}
           </div>
         ))}
       </section>
